@@ -14,15 +14,11 @@
 <body>
 
     <div class="container">
-
-
-        <div class="box">
-
+        <div class="box" id="log">
 
             <article class="media is-marginless">
-
                 <figure class="image is-32x32">
-                    <p>3</p>
+                    003
                 </figure>
                 <article class="message">
                     <div class="message-body">
@@ -34,7 +30,7 @@
 
             <article class="media is-marginless">
                 <figure class="image is-32x32">
-                    13
+                    013
                 </figure>
                 <article class="message">
                     <div class="message-body">
@@ -42,7 +38,6 @@
                     </div>
                 </article>
             </article>
-
 
             <article class="media is-marginless">
                 <figure class="image is-32x32">
@@ -55,7 +50,6 @@
                     </div>
                 </article>
             </article>
-
 
         </div>
 
@@ -83,28 +77,6 @@
             var msg = document.getElementById("msg");
             var log = document.getElementById("log");
 
-
-            function appendLog(name, message) {
-                var item = document.createElement("tr")
-                item.appendChild(name)
-                item.appendChild(message)
-                log.appendChild(item);
-
-                window.scrollTo(0, document.body.scrollHeight);
-            }
-
-            document.getElementById("send").onclick = function () {
-                if (!conn) {
-                    return false;
-                }
-                if (!msg.value) {
-                    return false;
-                }
-                conn.send(msg.value);
-                msg.value = "";
-                return false;
-            };
-
             if (window["WebSocket"]) {
                 conn = new WebSocket("ws://" + document.location.host + "/ws");
                 conn.onclose = function (evt) {
@@ -129,15 +101,55 @@
                 item.innerHTML = "<b>Your browser does not support WebSockets.</b>";
                 appendLog(item);
             }
-        };
 
-        msg.addEventListener("keyup", function (event) {
-            event.preventDefault();
-            if (event.keyCode === 13) {
-                document.getElementById("send").click();
+            document.getElementById("send").onclick = function () {
+                if (!conn) {
+                    return false;
+                }
+                if (!msg.value) {
+                    return false;
+                }
+                conn.send(msg.value);
+                msg.value = "";
+                return false;
+            };
+
+            msg.addEventListener("keyup", function (event) {
+                event.preventDefault();
+                if (event.keyCode === 13) {
+                    document.getElementById("send").click();
+                }
+            });
+
+            function createLogEntryElem(message) {
+                let messageDiv = document.createElement("div")
+                messageDiv.appendChild(document.createElement("p").innerText = message)
+                messageDiv.classList.add("message-body")
+
+                let messageElem = document.createElement("article")
+                messageElem.appendChild(messageDiv)
+                messageElem.classList.add("message")
+
+                let figure = document.createElement("figure")
+                figure.classList.add("image", "is-32x32")
+                figure.innerText = "bls"
+
+                let entry = document.createElement("article")
+                entry.appendChild(figure)
+                entry.appendChild(messageElem)
+                entry.classList.add("media", "is-marginless")
+
+                return entry
             }
-        });
 
+            function appendLog(name, message) {
+                log.appendChild(
+                    createLogEntryElem(message)
+                )
+                window.scrollTo(0, document.body.scrollHeight);
+            }
+
+        };
     </script>
     <style>
         .message-body {
