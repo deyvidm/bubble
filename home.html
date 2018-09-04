@@ -9,15 +9,40 @@
     <title>Chat Test</title>
 
     <link rel="stylesheet" href="bulma.min.css">
-
 </head>
 
 <body>
 
-    <div id="log"></div>
-    <nav class="level">
-        <!-- Left side -->
-        <div class="level-left">
+    <div class="container">
+
+        <div class="card-table box">
+            <div class="content">
+                <table class="table is-fullwidth is-striped">
+                    <tbody id="log">
+                        <tr>
+                            <td width="20%">313bj83j5</td>
+                            <td>Lorum ipsum dolem aire</td>
+                        </tr>
+                        <tr>
+                            <td width="20%">14jo904</td>
+                            <td>Lorum ipsum dolem aire</td>
+                        </tr>
+                        <tr>
+                            <td width="20%">nv093n</td>
+                            <td>Lorum ipsum dolem aire</td>
+                        </tr>
+                        <tr>
+                            <td width="20%">vno93014oni9</td>
+                            <td>Lorum ipsum dolem aire</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <nav class="level">
+            <!-- Left side -->
+            <!-- <div class="level-left"> -->
             <div class="level-item">
                 <div class="field has-addons">
                     <p class="control">
@@ -30,21 +55,24 @@
                     </p>
                 </div>
             </div>
-        </div>
-    </nav>
+            <!-- </div> -->
+        </nav>
 
+    </div>
     <script type="text/javascript">
         window.onload = function () {
             var conn;
             var msg = document.getElementById("msg");
             var log = document.getElementById("log");
 
-            function appendLog(item) {
-                var doScroll = log.scrollTop > log.scrollHeight - log.clientHeight - 1;
+
+            function appendLog(name, message) {
+                var item = document.createElement("tr")
+                item.appendChild(name)
+                item.appendChild(message)
                 log.appendChild(item);
-                if (doScroll) {
-                    log.scrollTop = log.scrollHeight - log.clientHeight;
-                }
+                
+                window.scrollTo(0,document.body.scrollHeight);
             }
 
             document.getElementById("send").onclick = function () {
@@ -69,13 +97,17 @@
                 conn.onmessage = function (evt) {
                     var messages = evt.data.split('\n');
                     for (var i = 0; i < messages.length; i++) {
-                        var item = document.createElement("div");
-                        item.innerText = messages[i];
-                        appendLog(item);
+                        var name = document.createElement("td")
+                        name.innerText = "j509124nf90j"
+                        name.setAttribute("width", "20%")
+
+                        var message = document.createElement("td");
+                        message.innerText = messages[i];
+                        appendLog(name, message);
                     }
                 };
             } else {
-                var item = document.createElement("div");
+                var item = document.createElement("tr");
                 item.innerHTML = "<b>Your browser does not support WebSockets.</b>";
                 appendLog(item);
             }
