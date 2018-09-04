@@ -15,34 +15,53 @@
 
     <div class="container">
 
-        <div class="card-table box">
-            <div class="content">
-                <table class="table is-fullwidth is-striped">
-                    <tbody id="log">
-                        <tr>
-                            <td width="20%">313bj83j5</td>
-                            <td>Lorum ipsum dolem aire</td>
-                        </tr>
-                        <tr>
-                            <td width="20%">14jo904</td>
-                            <td>Lorum ipsum dolem aire</td>
-                        </tr>
-                        <tr>
-                            <td width="20%">nv093n</td>
-                            <td>Lorum ipsum dolem aire</td>
-                        </tr>
-                        <tr>
-                            <td width="20%">vno93014oni9</td>
-                            <td>Lorum ipsum dolem aire</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+
+        <div class="box">
+
+
+            <article class="media is-marginless">
+
+                <figure class="image is-32x32">
+                    <p>3</p>
+                </figure>
+                <article class="message">
+                    <div class="message-body">
+                        hello
+                    </div>
+                </article>
+            </article>
+
+
+            <article class="media is-marginless">
+                <figure class="image is-32x32">
+                    13
+                </figure>
+                <article class="message">
+                    <div class="message-body">
+                        hi everyone my name is marcie
+                    </div>
+                </article>
+            </article>
+
+
+            <article class="media is-marginless">
+                <figure class="image is-32x32">
+                    133
+                </figure>
+                <article class="message">
+                    <div class="message-body">
+                        <p>
+                            shut the fuck up marcie
+                    </div>
+                </article>
+            </article>
+
+
         </div>
 
+        <!-- input elements -->
+
         <nav class="level">
-            <!-- Left side -->
-            <!-- <div class="level-left"> -->
             <div class="level-item">
                 <div class="field has-addons">
                     <p class="control">
@@ -55,10 +74,9 @@
                     </p>
                 </div>
             </div>
-            <!-- </div> -->
         </nav>
-
     </div>
+
     <script type="text/javascript">
         window.onload = function () {
             var conn;
@@ -71,8 +89,8 @@
                 item.appendChild(name)
                 item.appendChild(message)
                 log.appendChild(item);
-                
-                window.scrollTo(0,document.body.scrollHeight);
+
+                window.scrollTo(0, document.body.scrollHeight);
             }
 
             document.getElementById("send").onclick = function () {
@@ -99,7 +117,7 @@
                     for (var i = 0; i < messages.length; i++) {
                         var name = document.createElement("td")
                         name.innerText = "j509124nf90j"
-                        name.setAttribute("width", "20%")
+                        name.setAttribute("width", "10%")
 
                         var message = document.createElement("td");
                         message.innerText = messages[i];
@@ -121,7 +139,23 @@
         });
 
     </script>
+    <style>
+        .message-body {
+            padding: 0.30em 0.60em;
+        }
 
+        .media>figure {
+            padding: 0 0.4em 0 0 !important;
+            line-height: 2em !important;
+            text-align: right !important;
+        }
+
+        .media {
+            border: 0px !important;
+            margin-top: 0.25em !important;
+            padding-top: 0.25em !important;
+        }
+    </style>
 </body>
 
 </html>
