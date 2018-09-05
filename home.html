@@ -23,7 +23,7 @@
             <div class="level-item">
                 <div class="field has-addons">
                     <p class="control">
-                        <input id="msg" class="input" type="text" placeholder="">
+                        <input id="msg" class="input" type="text">
                     </p>
                     <p class="control">
                         <button id="send" class="button is-link">
@@ -119,17 +119,21 @@
         .message-body {
             padding: 0.30em 0.60em;
         }
-
+        .message {
+            max-width: 70em;
+        }
         .media>figure {
             padding: 0 0.4em 0 0 !important;
             line-height: 2em !important;
             text-align: right !important;
         }
-
         .media {
             border: 0px !important;
             margin-top: 0.25em !important;
             padding-top: 0.25em !important;
+        }
+        #log {
+            margin-top: 2em;
         }
     </style>
 </body>
